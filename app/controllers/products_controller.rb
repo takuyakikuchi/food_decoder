@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update]
 
     def show
+      flash[:danger]
     end
 
     def new
@@ -28,7 +29,7 @@ class ProductsController < ApplicationController
     private
 
     def set_product
-        @product = Product.find_by(barcode: params[:barcode])
+        @product = Product.find(params[:id])
     end
 
     def product_params

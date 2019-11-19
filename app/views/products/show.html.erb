@@ -1,0 +1,22 @@
+<%= render 'alert'%>
+<div class="container">
+  <div class="row">
+    <div>
+      <%= @product.name %>
+    </div>
+    <div>
+      <%= cl_image_tag @product.front_photo, height: 300, width: 400, crop: :fill %>
+    </div>
+      <div>
+      <%= @product.ingredients%>
+        <div>
+        <%= cl_image_tag @product.label_photo, height: 300, width: 400, crop: :fill %>
+        <% @product.label_text do |content|%>
+        <%= content %>
+        <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+
+<p>Barcode number: <%=@product.barcode%></p>
