@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post '/scan-barcodes', to: 'scans#create'
   get '/scan-labels', to: 'scans#new'
   post '/scan-labels', to: 'scans#create'
+
 end
