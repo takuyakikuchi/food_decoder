@@ -9,7 +9,6 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -21,6 +20,8 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :avatar %>
+    <%= f.input :avatar_cache, as: :hidden %>
   </div>
 
   <div class="form-actions">
