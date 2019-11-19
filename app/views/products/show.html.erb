@@ -1,0 +1,7 @@
+<div class="container">
+    <h1>Product Page</h1>
+    <h3><%= @product.name %></h3>
+    <%= cl_image_tag @product.front_photo, height: 300, width: 400, crop: :fill %>
+    <h3>Ingredients</h3>
+    <%= @product.ingredients %>
+</div>
