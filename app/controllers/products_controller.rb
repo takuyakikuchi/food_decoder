@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     private
 
     def set_product
-        @product = Product.find_by(barcode: params[:barcode])
+        @product = Product.find(params[:id])
     end
 
     def product_params

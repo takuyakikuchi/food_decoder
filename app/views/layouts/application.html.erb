@@ -15,5 +15,79 @@
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <script src="https://cdn.jsdelivr.net/npm/scandit-sdk@4.x"></script>
+    <script>
+      function continueScanning() {
+        if (picker) {
+          continueButton.disabled = true;
+          picker.resumeScanning();
+        }
+      }
+      const licenseKey =
+        "ASStOBJPDPfoP6i7EDq9gIozinACOSIg2XbgH6VyiHQiFk7XvkhjV6wIfqUnQX+g4WqPqHQKVGQzc0PzxnHjdhZRBtfCa9VtS1ci3nhwAqexMCEw6i06PjgMWD8AjREfql1/SnCxXb4rUuFLaqRHZwPZfb+vzQCUwIk6R0fDdU4eNUCTou5JYoHvszzdLZWXLRS4rVrisz8c79BecBh/0Xsd9pu5/kKovFfhAylC0O4faMLGSWzwNAfMV7OKOeBAAVOE1BhtpKQ4TBHfTNJ/dGQoXSxV3zhhqd2zbh3pKKZ8ZnIuFFLcNGzlfty22lQF07vD8X5I4kCevGX4oihIPfIf4SzFb+tweKT+iHmMkeDtHuLleooy9IDPSUvaviqlRDfUCQ6GoCZEWoQHJgrfckY7L+wtuwcl4QbBloRJpeNgNYHrBLl6JC7upBi/AclzNIrwQ5UvxZsU3oQmOpWrSbEpWfxu4J/iGolR9T7noCEUF0JUM3snv4bJGYrnGBV+ePmNC0ZZNY2qP9geXqtYWhQw2gQHxCAcqnNTjr2V0N65NL3cfyfO1Hj4DLy6bHG08/ib8BV8G/r6/cBado/IhZ/c7Dchj0ov6RqC3cHtMAo7Uf0QmMY8hH0bBwt/p/J7D9l3flpWg3aCDjiD0urRekmOi0r9KS0UN0PGoQUyLVHioHn+xy296fPQ9FR/b8sbCSePtgRIKk7bLKxg8VuwKtr1exRxOTJzEs6oXN/8Qa39NGDeS6oUoTx4btGivJb1vEVjxZrbup9d5ynHYlA270VnHsa2DF9B+0Y2";
+      const engineLocation =
+        "https://cdn.jsdelivr.net/npm/scandit-sdk@4.x/build";
+      ScanditSDK.configure(licenseKey, { engineLocation: engineLocation });
+      const scannerContainer = document.getElementById(
+        "scandit-barcode-picker"
+      );
+      const resultContainer = document.getElementById("scandit-barcode-result");
+      const continueButton = document.getElementById(
+        "continue-scanning-button"
+      );
+      const barcodeInput = document.getElementById("barcode")
+      continueButton.disabled = true;
+      continueButton.hidden = true;
+      let picker;
+      ScanditSDK.BarcodePicker.create(scannerContainer, {
+        playSoundOnScan: true,
+        vibrateOnScan: true
+      })
+        .then(barcodePicker => {
+          picker = barcodePicker;
+          const scanSettings = new ScanditSDK.ScanSettings({
+            enabledSymbologies: [
+              "ean8",
+              "ean13",
+              "upca",
+              "upce",
+              "code128",
+              "code39",
+              "code93",
+              "itf"
+            ],
+            codeDuplicateFilter: 1000
+          });
+          picker.applyScanSettings(scanSettings);
+          picker.on("scan", scanResult => {
+            continueButton.hidden = false;
+            continueButton.disabled = false;
+            picker.pauseScanning();
+            barcodeInput.value = scanResult.barcodes.reduce(
+              (string, barcode) =>
+                string +
+                `${barcode.data}`,
+              ""
+            );
+            const barcodeForm = document.getElementById("barcode-form")
+            barcodeForm.submit()
+            resultContainer.innerHTML = scanResult.barcodes.reduce(
+              (string, barcode) =>
+                string +
+                `${ScanditSDK.Barcode.Symbology.toHumanizedName(
+                  barcode.symbology
+                )}: ${barcode.data}<br>`,
+              ""
+            );
+          });
+          picker.on("scanError", error => {
+            console.error(error.message);
+          });
+          picker.resumeScanning();
+        })
+        .catch(error => {
+          alert(error);
+        });
+    </script>
   </body>
 </html>
