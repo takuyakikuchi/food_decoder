@@ -1,7 +1,15 @@
+
+<div class="position-relative">
+    <%= cl_image_tag @product.front_photo, height: 300, width: 400,class: 'product-img'%>
+</div>
+<h3 class="product-name"><%= @product.name %></h3>
 <div class="container">
-    <h1>Product Page</h1>
-    <h3><%= @product.name %></h3>
-    <%= cl_image_tag @product.front_photo, height: 300, width: 400, crop: :fill %>
-    <h3>Ingredients</h3>
-    <%= @product.ingredients %>
+    <div class="ingredient-list">
+        <h2 class="text-center mt-4 mb-5">Ingredients</h2>
+        <ul id="scroll-list" class="list-group list-group-flush">
+            <% @product.ingredients.split(',').each do |ingredient| %>
+                <li class="list-group-item"><%= ingredient %></li>
+            <% end %>
+        </ul>
+    </div>
 </div>
