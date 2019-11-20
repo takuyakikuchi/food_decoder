@@ -1,37 +1,40 @@
 class ProductsController < ApplicationController
-    before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update]
 
-    def show
+  def show
+  end
+
+  def new
+    @product = Product.new()
+    authorize @product
+  end
+
+  def create
+    @product = Product.new(product_params)
+    authorize @product
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render :new
     end
+  end
 
-    def new
-        @product = Product.new()
-    end
+  def edit
+  end
 
-    def create
-        @product = Product.new(product_params)
-        if @product.save
-          redirect_to product_path(@product)
-        else
-          render :new
-        end
-    end
+  def update
+    @product.update(product_params)
+    redirect_to product_path(@product)
+  end
 
-    def edit
-    end
+  private
 
-    def update
-        @product.update(product_params)
-        redirect_to product_path(@product)
-    end
+  def set_product
+    @product = Product.find(params[:id])
+    authorize @product
+  end
 
-    private
-
-    def set_product
-        @product = Product.find(params[:id])
-    end
-
-    def product_params
-        params.require(:product).permit(:name, :label_photo, :front_photo)
-    end
+  def product_params
+    params.require(:product).permit(:name, :label_photo, :front_photo)
+  end
 end
