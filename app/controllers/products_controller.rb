@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update]
 
     def show
-      flash[:danger]
     end
 
     def new
