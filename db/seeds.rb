@@ -23,3 +23,16 @@ candy.save!
 # -------------------------------------------
 
 puts "...created #{Product.count} products"
+
+puts 'Cleaning Restrictions '
+Restriction.destroy_all
+
+puts 'Creating restrictions......'
+
+restrictions = ['shrimp', 'crab', 'wheat', 'buckwheat', 'egg', 'milk', 'peanut', 'almond', 'abalone', 'squid', 'fish-egg', 'orange', 'cashew-nut', 'kiwi', 'meat', 'walnut', 'sesame', 'salmon', 'mackerel', 'soy', 'chicken', 'banana', 'pork', 'matsutake', 'peach', 'yam', 'apple', 'gelatin']
+
+restrictions.each do |restriction|
+  Restriction.create!(name: restriction, photo: "/assets/restrictions_logo/#{restriction}.png")
+end
+
+puts "...created #{Restriction.count} restrictions"
