@@ -16,5 +16,79 @@
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <script src="https://cdn.jsdelivr.net/npm/scandit-sdk@4.x"></script>
+    <script>
+      function continueScanning() {
+        if (picker) {
+          continueButton.disabled = true;
+          picker.resumeScanning();
+        }
+      }
+      const licenseKey =
+        "ASldmxBPDjTYEzgsggQvaCUMxci2CkamFF9tO91XwNsqIMbjGW5EhvQa9og6cOlrjXuPw+VA7XExN8cha3L5OH9AoCQbaNRXRyRtoJlsS9q4W9L4LkYH829EERDMPIwbyg+K85AHsd51jtXVgTRNstszTV+hOu4zU6lMhbKHfXD8GRxUzvoLI4S+lNy71RHEyj0OgvJVhKBvAiUImVxOGQhAg24Q01eIp5G5Jd1M19SAcnuSJVXv9Ka0rIPQ0yrfvo2Zvh3GMyLR/Fpi6vGqlu5kvrMfSbIapUvApM6P3hES8e0s/U4dVnUpprSxTjHzqvc7RgOybFaSsSugr0be6RBQxK7dhLq3Er/VP5D7o1XM/op0nCrZPAS0wgCF3taiNBqVBeD9IA9GCzProAvgxOBbrG1xw7+Dl4Dyk/I1txrAz3hmUAD4O+M8N86adJ5yrFIInsTr+z5Lh8llJcDJL0hObBRN/+Lw4pxu1zhqFzpYVOGkvQrab+oIr61AxgLdKCuW3amTTtsZZArxWCZIx1/WAD8qKtjdr7VnJ4MOvnxxsjxqzdDeyP/QbBB759TRszkt8rWLcMgRJZNJCQ4CImM2fzvdY3tU72ApfqUYpVKX5wTImcUSJZ9JCcNQYPYq9XqcgUosNanqxEtEzgLv39E73TDLtnVxGqL2+f9UkhaeCi9unjKRmCnb3TSEByB2fSaPQjgUXuJpdUnwCsaxmllcTdXxEZ9Gqsr6T96GYak3uFC+CzcNXXJKOwbwQqvj8CojZXTxBWJO0CyA/loKzOQUIg5lYVbJBte8lDeJZ7dHVDkUDjLQ+g==";
+      const engineLocation =
+        "https://cdn.jsdelivr.net/npm/scandit-sdk@4.x/build";
+      ScanditSDK.configure(licenseKey, { engineLocation: engineLocation });
+      const scannerContainer = document.getElementById(
+        "scandit-barcode-picker"
+      );
+      const resultContainer = document.getElementById("scandit-barcode-result");
+      const continueButton = document.getElementById(
+        "continue-scanning-button"
+      );
+      const barcodeInput = document.getElementById("barcode")
+      continueButton.disabled = true;
+      continueButton.hidden = true;
+      let picker;
+      ScanditSDK.BarcodePicker.create(scannerContainer, {
+        playSoundOnScan: true,
+        vibrateOnScan: true
+      })
+        .then(barcodePicker => {
+          picker = barcodePicker;
+          const scanSettings = new ScanditSDK.ScanSettings({
+            enabledSymbologies: [
+              "ean8",
+              "ean13",
+              "upca",
+              "upce",
+              "code128",
+              "code39",
+              "code93",
+              "itf"
+            ],
+            codeDuplicateFilter: 1000
+          });
+          picker.applyScanSettings(scanSettings);
+          picker.on("scan", scanResult => {
+            continueButton.hidden = false;
+            continueButton.disabled = false;
+            picker.pauseScanning();
+            barcodeInput.value = scanResult.barcodes.reduce(
+              (string, barcode) =>
+                string +
+                `${barcode.data}`,
+              ""
+            );
+            const barcodeForm = document.getElementById("barcode-form")
+            barcodeForm.submit()
+            resultContainer.innerHTML = scanResult.barcodes.reduce(
+              (string, barcode) =>
+                string +
+                `${ScanditSDK.Barcode.Symbology.toHumanizedName(
+                  barcode.symbology
+                )}: ${barcode.data}<br>`,
+              ""
+            );
+          });
+          picker.on("scanError", error => {
+            console.error(error.message);
+          });
+          picker.resumeScanning();
+        })
+        .catch(error => {
+          alert(error);
+        });
+    </script>
   </body>
 </html>
