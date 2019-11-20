@@ -1,21 +1,24 @@
 
 <%= render 'alert'%>
-                   
-<div class="position-relative">
-    <%= cl_image_tag @product.front_photo, height: 300, width: 400,class: 'product-img'%>
-</div>
-<h3 class="product-name"><%= @product.name %></h3>
 <div class="container">
-    <div class="ingredient-list">
-        <h2 class="text-center mt-4 mb-5">Ingredients</h2>
-        <ul id="scroll-list" class="list-group list-group-flush">
-            <% @product.ingredients.downcase.split(",").each do |ingredient| %>
-                <% if (ingredient.split(" ") & @allergens).any? %>
-                    <li class="list-group-item bg-danger"><%= ingredient %></li>
-                <% else %>
-                    <li class="list-group-item"><%= ingredient %></li>
-                <% end %>
-            <% end %>
-        </ul>
+    <div class="row justify-content-center">  
+        <div class="col col-lg-6">             
+            <div class="position-relative">
+                <%= cl_image_tag @product.front_photo, height: 300, class: 'product-img shadow'%>
+                <h1 class="product-name"><%= @product.name.capitalize %></h1>
+                <div class="ingredient-list shadow">
+                    <h2 class="text-center mt-4 mb-5 font-weight-bold"><img src="/assets/restrictions_logo/ingredient.png" alt="icon" width="50" height="50" class="mr-2 mb-3">Ingredients</h2>
+                    <ul id="scroll-list" class="list-group list-group-flush">
+                        <% @product.ingredients.downcase.split(",").each do |ingredient| %>
+                            <% if (ingredient.split(" ") & @allergens).any? %>
+                                <li class="list-group-item bg-danger"><%= ingredient %></li>
+                            <% else %>
+                                <li class="list-group-item"><%= ingredient %></li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
