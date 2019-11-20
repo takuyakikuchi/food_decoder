@@ -9,8 +9,12 @@
     <div class="ingredient-list">
         <h2 class="text-center mt-4 mb-5">Ingredients</h2>
         <ul id="scroll-list" class="list-group list-group-flush">
-            <% @product.ingredients.split(',').each do |ingredient| %>
-                <li class="list-group-item"><%= ingredient %></li>
+            <% @product.ingredients.downcase.split(",").each do |ingredient| %>
+                <% if (ingredient.split(" ") & @allergens).any? %>
+                    <li class="list-group-item bg-danger"><%= ingredient %></li>
+                <% else %>
+                    <li class="list-group-item"><%= ingredient %></li>
+                <% end %>
             <% end %>
         </ul>
     </div>
