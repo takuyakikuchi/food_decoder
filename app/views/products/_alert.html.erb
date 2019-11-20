@@ -1,0 +1,38 @@
+<% if 1 == 1 %>
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center" id="alert">
+        <h5 class="modal-body"><br><strong> Food Restriction Alert </strong></h5>
+        <div>
+          <%= image_tag 'danger.png' , :size =>"100x100" %>
+        </div>
+        <br><br>
+        <p>Please check ingredients</p>
+        <br>
+        <div class="mb-3 mx-auto">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </div>
+  </div>
+</div>
+<% else %>
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center" id="alert">
+        <h5 class="modal-body">
+          <br><strong> Safe ! </strong></h5>
+        <div><%= image_tag 'nice.png', :size =>"100x100" %></div>
+        <br>
+        <p>Please check ingredients</p>
+        <br>
+        <div class="mb-3 mx-auto">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

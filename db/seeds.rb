@@ -36,3 +36,4 @@ restrictions.each do |restriction|
 end
 
 puts "...created #{Restriction.count} restrictions"
+
