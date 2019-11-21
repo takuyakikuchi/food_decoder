@@ -1,2 +1,37 @@
-User show page
-<%#= cl_image_tag @user.avatar, height:150, width:150, crop: :fill, gravity: :face, radius: :max, alt: "avatar" %>
+<div class="container">
+  <!-- User main info -->
+  <div class="d-flex border-bottom pb-3 m-3">
+    <%= cl_image_tag @user.avatar, height:100, width:100, crop: :fill, gravity: :face, radius: :max, alt: "avatar" %>
+    <div class="user_info ml-3 align-middle">
+      <p class="m-0"><%= @user.name %></p>
+      <p><%= @user.email %></p>
+    </div>
+  </div>
+  <!-- User restrictions -->
+  <div class="m-3 border-bottom">
+    <div class="d-flex justify-content-between">
+      <h2 class="h6"><%= @user.name.capitalize %>'s food restrictions</h2>
+      <%= link_to "edit", "#" %>
+    </div>
+    <% @user.restrictions.each do |food| %>
+      <%= image_tag(food.photo, size: "50") %>
+      <p><%= food.name %></p>
+    <% end %>
+  </div>
+  <!-- User's favorite -->
+  <div class="m-3 border-bottom">
+    <h2 class="h6"><%= @user.name.capitalize %>'s favorites</h2>
+    <% @user.histories.each do |product| %>
+      <% if product.favorite == true %>
+        <p><%= product.product_id %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- User scan histories -->
+  <div class="m-3">
+    <h2 class="h6">Scanned history</h2>
+    <% @user.histories.each do |product| %>
+      <p><%= product.product_id %></p>
+    <% end %>
+  </div>
+</div>
