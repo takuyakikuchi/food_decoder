@@ -3,6 +3,16 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def show
+    restrictions = Restriction.all.first(28)
+    if user_signed_in?
+      @allergens = current_user.restrictions.map do |restriction|
+        restriction.name
+      end
+    else
+      @allergens = restrictions.map do |restriction|
+        restriction.name
+      end
+    end
   end
 
   def new
