@@ -5,7 +5,7 @@
 
   <div class="d-flex align-items-center">
     <%= link_to scan_barcodes_path, class: "nav-link" do%>
-      <%= image_tag 'barcode-green.png', height:50, width:50 %>
+      <%= image_tag 'barcode-green.png', height:60, width:60 %>
     <% end %>
     <% if user_signed_in? %>
       <%= link_to  user_path(current_user) do %>
