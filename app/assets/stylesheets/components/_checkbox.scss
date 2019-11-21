@@ -1,0 +1,25 @@
+.restriction-choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.restriction-choice {
+  background-color: #a2ded0;
+  padding: 20px;
+  border-radius: 5px;
+  flex: 0 0 30%;
+  text-align: center;
+  opacity: 0.4;
+  margin-bottom: 8px;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+    background: #a2ded0;
+    color: white;
+    opacity: 1;
+  }
+}
