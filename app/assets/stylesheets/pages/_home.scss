@@ -4,19 +4,28 @@
   background-position: center;
   padding: 150px 0;
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .banner h1 {
   margin: 0;
   color: white;
-  opacity: .8;
+  opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
+  text-align: center;
 }
 
-.btn-flat {
-  margin-top: 16px;
+.btn_div {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.btn_div .btn-flat {
+  margin-top: 40px;
+  padding: 24px 32px;
   color: white;
   opacity: .8;
   padding: 8px 24px;
@@ -25,7 +34,7 @@
   transition: background 0.3s ease;
 }
 
-.btn-flat:hover {
+.btn_div .btn-flat:hover {
   background: #3AAFA9;
   color: white;
 }
