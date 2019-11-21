@@ -4,8 +4,14 @@ class ProductsController < ApplicationController
 
   def show
     restrictions = Restriction.all.first(28)
-    @allergens = restrictions.map do |restriction|
-      restriction.name
+    if user_signed_in?
+      @allergens = current_user.restrictions.map do |restriction|
+        restriction.name
+      end
+    else
+      @allergens = restrictions.map do |restriction|
+        restriction.name
+      end
     end
   end
 
