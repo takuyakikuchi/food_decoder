@@ -10,11 +10,15 @@
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <% if current_user.avatar %>
-  <%= cl_image_tag current_user.avatar, height:50, width:50, crop: :fill, gravity: :face, radius: :max, border: "2px_solid_black" %>
-  <% else %>
+  <% if user_signed_in? %>
+    <% if current_user.avatar %>
+      <%= cl_image_tag current_user.avatar, height:50, width:50, crop: :fill, gravity: :face, radius: :max, border: "2px_solid_black" %>
+    <% else %>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC4oRRuY4EBwz_neISEZR8Z8lCBC8G5yYCmtAj8Ko0TTAt7xSFi5KHNaDXdg&s=10" alt="logo" width="35" height="35" class="rounded-circle">
     <% end %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  <% end %>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,16 +26,13 @@
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
         <li class="nav-item">
-            <%= link_to "Product List", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "User page", user_path(current_user), class: "dropdown-item" %>
         </li>
         <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </li>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
       <% end %>
     </ul>
   </div>
