@@ -8,7 +8,7 @@
     </div>
   </div>
   <!-- User restrictions -->
-  <div class="m-3 border-bottom">
+  <div class="m-3"> <!-- border-bottom will be added later -->
     <div class="d-flex justify-content-between">
       <h2 class="h6"><%= @user.name.capitalize %>'s food restrictions</h2>
       <%= link_to "edit", "#" %>
@@ -19,19 +19,19 @@
     <% end %>
   </div>
   <!-- User's favorite -->
-  <div class="m-3 border-bottom">
+  <!-- <div class="m-3 border-bottom">
     <h2 class="h6"><%= @user.name.capitalize %>'s favorites</h2>
     <% @user.histories.each do |product| %>
       <% if product.favorite == true %>
         <p><%= product.product_id %></p>
       <% end %>
     <% end %>
-  </div>
+  </div> -->
   <!-- User scan histories -->
-  <div class="m-3">
+  <!-- <div class="m-3">
     <h2 class="h6">Scanned history</h2>
     <% @user.histories.each do |product| %>
       <p><%= product.product_id %></p>
     <% end %>
-  </div>
+  </div> -->
 </div>
