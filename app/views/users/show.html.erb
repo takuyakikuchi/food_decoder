@@ -4,15 +4,19 @@
     <h1 class="h4"><%= @user.name.capitalize %>'s profile</h2>
   </div>
   <!-- User restrictions -->
-  <div class="m-3"> <!-- border-bottom will be added later -->
+  <div> <!-- border-bottom will be added later -->
     <div class="d-flex justify-content-between">
       <h2 class="h6">Food restrictions</h2>
       <%= link_to "edit", "#" %>
     </div>
-    <% @user.restrictions.each do |food| %>
-      <%= image_tag(food.photo, size: "50") %>
-      <p><%= food.name %></p>
-    <% end %>
+    <div class="restriction-choices">
+      <% @user.restrictions.each do |food| %>
+        <div class="restriction-choice_profile">
+          <%= image_tag(food.photo, size: "30") %>
+          <p><%= food.name %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
   <!-- User's favorite -->
   <!-- <div class="m-3 border-bottom">
