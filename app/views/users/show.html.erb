@@ -1,16 +1,12 @@
 <div class="container">
   <!-- User main info -->
-  <div class="d-flex border-bottom pb-3 m-3">
-    <%= cl_image_tag @user.avatar, height:100, width:100, crop: :fill, gravity: :face, radius: :max, alt: "avatar" %>
-    <div class="user_info ml-3 align-middle">
-      <p class="m-0"><%= @user.name %></p>
-      <p><%= @user.email %></p>
-    </div>
+  <div class="pb-3 m-3 text-center">
+    <h1 class="h4"><%= @user.name.capitalize %>'s profile</h2>
   </div>
   <!-- User restrictions -->
   <div class="m-3"> <!-- border-bottom will be added later -->
     <div class="d-flex justify-content-between">
-      <h2 class="h6"><%= @user.name.capitalize %>'s food restrictions</h2>
+      <h2 class="h6">Food restrictions</h2>
       <%= link_to "edit", "#" %>
     </div>
     <% @user.restrictions.each do |food| %>
