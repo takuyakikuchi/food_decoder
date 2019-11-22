@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_053658) do
   enable_extension "plpgsql"
 
   create_table "histories", force: :cascade do |t|
-    t.boolean "favorite"
+    t.boolean "favorite", default: false
     t.bigint "user_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false

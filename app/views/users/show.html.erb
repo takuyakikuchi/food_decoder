@@ -12,7 +12,7 @@
     <div class="restriction-choices">
       <% @user.restrictions.each do |food| %>
         <div class="restriction-choice_profile">
-          <%= image_tag(food.photo, size: "30") %>
+          <%= image_tag(food.photo.file.filename, size: "30") %>
           <p><%= food.name %></p>
         </div>
       <% end %>
