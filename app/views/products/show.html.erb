@@ -11,7 +11,7 @@
                     <ul id="scroll-list" class="list-group list-group-flush">
                         <% @product.ingredients.downcase.split(",").each do |ingredient| %>
                             <% if (ingredient.split(" ") & @allergens).any? %>
-                                <li class="list-group-item bg-warning font-weight-bold"><%= ingredient %></li>
+                                <li class="list-group-item bg-danger font-weight-bold"><%= ingredient %></li>
                             <% else %>
                                 <li class="list-group-item"><%= ingredient %></li>
                             <% end %>
