@@ -1,9 +1,8 @@
-test
 <div class="container">
   <h2 class="text-center mt-4 h5">Customize <%= @user.name.capitalize %>'s food restrictions</h2>
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <%= simple_form_for [@user] do |f| %>
+      <%= simple_form_for @user do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
         <div class="form-group">
