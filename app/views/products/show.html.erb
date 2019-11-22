@@ -1,8 +1,7 @@
-
 <%= render 'alert'%>
 <div class="container">
-    <div class="row justify-content-center">  
-        <div class="col col-lg-6">             
+    <div class="row justify-content-center">
+        <div class="col col-lg-6">
             <div class="position-relative">
                 <%= cl_image_tag @product.front_photo, height: 300, class: 'product-img shadow'%>
                 <h1 class="product-name"><%= @product.name.capitalize %></h1>
