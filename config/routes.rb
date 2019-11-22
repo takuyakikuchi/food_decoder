@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resources :products, only: [:show, :new, :create, :edit, :update]
   resources :users, only: [:show, :edit, :update]
+  resources :restrictions, only: [:new, :create]
   resources :histories, only: [:index, :update]
-
   get '/scan-barcodes', to: 'scans#new'
   post '/scan-barcodes', to: 'scans#create'
   get '/scan-labels', to: 'scans#new'

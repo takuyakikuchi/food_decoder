@@ -1,0 +1,17 @@
+<!--this one is to be deleted-->
+<div class="form-group">
+  <label class="control-label check_boxes optional">Restrictions</label>
+  <input type="hidden" name="user[restriction_ids][]" value="">
+  <div class="restriction-choices">
+    <% Restriction.all.each do |restriction| %>
+      <input style="display: none;" class="hidden" type="checkbox" value="<%= restriction.id %>" name="user[restriction_ids][]" id="user_restriction_ids_<%= restriction.id %>">
+      <label class="restriction-choice" for="user_restriction_ids_<%= restriction.id %>">
+        <img src=<%= restriction.photo %>, alt="icon" width="70" height="70"><p><%= restriction.name %></p>
+      </label>
+    <% end %>
+  </div>
+  <% link_to new_restriction_path do%>
+  <%= image_tag 'plus.png' width:70, height:70 %>
+  <p>Add</p>
+  <% end %>
+</div>
