@@ -7,11 +7,11 @@
                 <%= cl_image_tag @product.front_photo, height: 300, class: 'product-img shadow'%>
                 <h1 class="product-name"><%= @product.name.capitalize %></h1>
                 <div class="ingredient-list shadow">
-                    <h2 class="text-center mt-4 mb-5 font-weight-bold"><img src="/assets/restrictions_logo/ingredient.png" alt="icon" width="50" height="50" class="mr-2 mb-3">Ingredients</h2>
+                    <h2 class="text-center mt-4 mb-5 font-weight-bold"><%= image_tag("restrictions_logo/ingredient.png", size: "40", class: "mr-2 mb-2") %>Ingredients</h2>
                     <ul id="scroll-list" class="list-group list-group-flush">
                         <% @product.ingredients.downcase.split(",").each do |ingredient| %>
                             <% if (ingredient.split(" ") & @allergens).any? %>
-                                <li class="list-group-item bg-danger"><%= ingredient %></li>
+                                <li class="list-group-item bg-danger font-weight-bold"><%= ingredient %></li>
                             <% else %>
                                 <li class="list-group-item"><%= ingredient %></li>
                             <% end %>
