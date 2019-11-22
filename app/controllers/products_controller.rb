@@ -13,6 +13,9 @@ class ProductsController < ApplicationController
         restriction.name
       end
     end
+    @all_restrictions = restrictions.map do |restriction|
+      restriction.name
+    end
   end
 
   def new
