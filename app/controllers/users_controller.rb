@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     end
     restrictions = UserRestriction.new()
     arr = params[:user][:restriction_ids]
+    raise
     arr.delete("")
     arr.each do |id|
       if exists.include?(id)
