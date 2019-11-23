@@ -12,9 +12,8 @@ class ScansController < ApplicationController
       authorize @product
       redirect_to product_path(@product)
     else
-      @product = params[:barcode]
       skip_authorization
-      redirect_to new_product_path(@product)
+      redirect_to new_product_path(barcode: params[:barcode])
     end
   end
 

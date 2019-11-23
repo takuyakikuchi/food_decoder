@@ -19,8 +19,8 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if @barcode # @barcode should not be nil
-      @product = Product.new(@barcode) #barcode should act as placeholder
+    if params[:barcode] # @barcode should not be nil
+      @product = Product.new(barcode: params[:barcode]) #barcode should act as placeholder
     else
       @product = Product.new()
     end
