@@ -10,18 +10,16 @@ class UsersController < ApplicationController
     exists = @user.restrictions.map do |restriction|
       restriction.id
     end
-    restrictions = UserRestriction.new()
     arr = params[:user][:restriction_ids]
-    raise
     arr.delete("")
-    arr.each do |id|
+    arr.each do |string_id|
+      id = string_id.to_i
       if exists.include?(id)
-        deleting = @user.restrictions.find(id)
-        deleting.delete
+        UserRestriction.where(user_id: current_user.id, restriction_id: id).delete_all
       else
+        restrictions = UserRestriction.new()
         restrictions.user = @user
-        found = Restriction.find(id)
-        restrictions.restriction = found
+        restrictions.restriction = Restriction.find(id)
         restrictions.save
       end
     end
@@ -29,10 +27,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  # def user_params
-  #   params.require(:user).permit(restriction_ids: [])
-  # end
 
   def set_user
     @user = User.find(params[:id])
