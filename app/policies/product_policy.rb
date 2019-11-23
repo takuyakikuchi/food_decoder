@@ -8,6 +8,9 @@ class ProductPolicy < ApplicationPolicy
   def show?
     return true
   end
+  def new
+    create?
+  end
 
   def create?
     return true

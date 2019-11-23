@@ -19,7 +19,11 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new()
+    if @barcode # @barcode should not be nil
+      @product = Product.new(@barcode) #barcode should act as placeholder
+    else
+      @product = Product.new()
+    end
     authorize @product
   end
 
@@ -49,6 +53,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :label_photo, :front_photo)
+    params.require(:product).permit(:barcode, :name, :label_photo, :front_photo)
   end
 end
