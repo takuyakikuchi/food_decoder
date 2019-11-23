@@ -12,12 +12,12 @@
               <% if @user.restrictions.include?(restriction) %>
                 <input style="display: none;" class="hidden" type="checkbox" value="<%= restriction.id %>" name="user[restriction_ids][]" id="user_restriction_ids_<%= restriction.id %>">
                 <label class="restriction-choice active" for="user_restriction_ids_<%= restriction.id %>">
-                  <%= image_tag(restriction.photo, size: "30") %><p><%= restriction.name %></p>
+                  <%= image_tag(restriction.photo.file.filename, size: "30") %><p><%= restriction.name %></p>
                 </label>
               <% else %>
                 <input style="display: none;" class="hidden" type="checkbox" value="<%= restriction.id %>" name="user[restriction_ids][]" id="user_restriction_ids_<%= restriction.id %>">
                 <label class="restriction-choice" for="user_restriction_ids_<%= restriction.id %>">
-                  <%= image_tag(restriction.photo, size: "30") %><p><%= restriction.name %></p>
+                  <%= image_tag(restriction.photo.file.filename, size: "30") %><p><%= restriction.name %></p>
                 </label>
               <% end %>
             <% end %>
