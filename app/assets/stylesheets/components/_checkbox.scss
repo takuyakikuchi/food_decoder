@@ -24,6 +24,12 @@
   }
 }
 
+.restriction-choices_profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+
 .restriction-choice_profile {
   background-color: #a2ded0;
   padding: 8px;
@@ -31,6 +37,5 @@
   flex: 0 0 30%;
   text-align: center;
   opacity: 1;
-  margin-bottom: 8px;
   background: #a2ded0;
 }
