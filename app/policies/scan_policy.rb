@@ -8,5 +8,4 @@ class ScanPolicy < ApplicationPolicy
   def create?
     return true
   end
-
 end

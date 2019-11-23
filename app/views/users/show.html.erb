@@ -7,9 +7,9 @@
   <div> <!-- border-bottom will be added later -->
     <div class="d-flex justify-content-between">
       <h2 class="h6">Food restrictions</h2>
-      <%= link_to "edit", "#" %>
+      <%= link_to "edit", edit_user_path(@user) %>
     </div>
-    <div class="restriction-choices">
+    <div class="restriction-choices_profile">
       <% @user.restrictions.each do |food| %>
         <div class="restriction-choice_profile">
           <%= image_tag(food.photo.file.filename, size: "30") %>

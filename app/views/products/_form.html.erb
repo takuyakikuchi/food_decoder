@@ -1,0 +1,19 @@
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-inputs">
+        <%= simple_form_for @product do |f| %>
+          <%= f.input :barcode %>
+          <%= f.input :name %>
+          <%= f.input :ingredients, as: :text %>
+          <%= f.input :front_photo %>
+          <%= f.input :front_photo_cache, as: :hidden %>
+          <%= f.input :label_photo %>
+          <%= f.input :label_photo_cache, as: :hidden %>
+          <div class="form-actions text-center mt-3">
+          <%= f.button :submit, "Add", class: 'btn btn-primary' %>
+          <% %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

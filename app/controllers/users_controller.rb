@@ -3,6 +3,29 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def edit
+  end
+
+  def update
+    exists = @user.restrictions.map do |restriction|
+      restriction.id
+    end
+    arr = params[:user][:restriction_ids]
+    arr.delete("")
+    arr.each do |string_id|
+      id = string_id.to_i
+      if exists.include?(id)
+        UserRestriction.where(user_id: current_user.id, restriction_id: id).delete_all
+      else
+        restrictions = UserRestriction.new()
+        restrictions.user = @user
+        restrictions.restriction = Restriction.find(id)
+        restrictions.save
+      end
+    end
+    redirect_to user_path(@user)
+  end
+
   private
 
   def set_user
