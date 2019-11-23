@@ -8,8 +8,14 @@ class ScansController < ApplicationController
 
   def create
     @product = Product.find_by(barcode: params[:barcode])
-    authorize @product
-    redirect_to product_path(@product)
+    if @product
+      authorize @product
+      redirect_to product_path(@product)
+    else
+      @product = params[:barcode]
+      skip_authorization
+      redirect_to new_product_path(@product)
+    end
   end
 
   private
