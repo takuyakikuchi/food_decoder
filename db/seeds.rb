@@ -30,7 +30,7 @@ include ActionView::Helpers
 
 # puts 'Creating restrictions......'
 
-# restrictions = ['shrimp', 'crab', 'wheat', 'buckwheat', 'egg', 'milk', 'peanut', 'almond', 'abalone', 'squid', 'fish-egg', 'orange', 'cashew-nut', 'kiwi', 'meat', 'walnut', 'sesame', 'salmon', 'mackerel', 'soy', 'chicken', 'banana', 'pork', 'matsutake', 'peach', 'yam', 'apple', 'gelatin']
+# restrictions = ['shrimp', 'crab', 'wheat', 'buckwheat', 'egg', 'milk', 'peanut', 'almond', 'abalone', 'squid', 'fish-egg', 'orange', 'cashew-nut', 'kiwi', 'meat', 'walnut', 'sesame', 'salmon', 'mackerel', 'soy', 'chicken', 'banana', 'pork', 'matsutake', 'peach', 'yam', 'apple', 'gelatin', 'beef']
 
 # restrictions.each do |restriction|
 #   Restriction.create!(name: restriction, photo: "restrictions_logo/#{restriction}.png")
