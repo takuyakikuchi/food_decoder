@@ -15,7 +15,9 @@
           <p class="mb-0">Logout</p>
         <% end %>
     <% else %>
-      <%= link_to "Login", new_user_session_path, class: "nav-link session"%>
+      <%= link_to new_user_session_path, class: "session text-decoration-none" do %>
+        <p class="mb-0">Login</p>
+      <% end %>
     <% end %>
   </div>
 </div>
