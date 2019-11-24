@@ -39,6 +39,7 @@ puts " Created : #{Product.last}"
 
 another = Product.new(barcode: 4979450793526, name: 'Hidagyu beef curry', ingredients: "Beef, vegetables(carrot, potato, ginger), wheat, roasted onion, beef oil, lard, milk product (contains soy), curry powder, sugar, apple paste, soy sauce(contains wheat and soy), beef extract, oister sauce(contains soy and apple), butter, salt, tomato paste, potherb, condiment (amino acid), colorant (caramel), acidulant, flavoring agent")
 another.remote_front_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574405701/food-decoder/hidagyu_front_xcrkwb.jpg'
+another.remote_label_photo_url = 'https://res.cloudinary.com/nst-img/image/upload/v1574580479/product_test_5_mg5y1i.jpg'
 another.save!
 
 puts "Create: #{Product.last}"
