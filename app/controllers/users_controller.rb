@@ -2,8 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
+    @allergens = current_user.restrictions.map do |restriction|
+      restriction.name
+    end
   end
-
+  
   def edit
   end
 
