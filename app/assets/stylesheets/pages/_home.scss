@@ -10,8 +10,8 @@
 
 .banner h1 {
   margin: 0;
-  color: white;
-  opacity: .7;
+  color: #eeeeee;
+  opacity: 0.9;
   text-shadow: 1px 1px 7px #2e3131;
   font-size: 32px;
   font-weight: bold;
@@ -27,18 +27,57 @@
   margin-top: 40px;
   padding: 24px 32px;
   color: white;
-  opacity: .9;
+  opacity: 0.9;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #3AAFA9;
+  background: #3aafa9;
   transition: background 0.3s ease;
 }
 
 .btn_div .btn-flat:hover {
-  background: #3AAFA9;
+  background: #3aafa9;
   color: white;
 }
 
-html, body {
+html,
+body {
   height: 100%;
+}
+
+.jittery {
+  animation: jittery 3s infinite;
+  padding: 10px 20px;
+  margin: 20px;
+  border-radius: 8px;
+  background-color: #a2ded0;
+  color: whitesmoke;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  text-shadow: 1px 1px 5px #2e3131;
+}
+
+@keyframes jittery {
+  5%,
+  50% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  15% {
+    transform: scale(1.15);
+  }
+  20% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+  25% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  30% {
+    transform: scale(1.15) rotate(-3deg);
+  }
+  35% {
+    transform: scale(1.15) rotate(2deg);
+  }
 }
