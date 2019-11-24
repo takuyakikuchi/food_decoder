@@ -8,6 +8,12 @@ class ScansController < ApplicationController
 
   def create
     @product = Product.find_by(barcode: params[:barcode])
+    if user_signed_in?
+      history = History.new()
+      history.product = @product
+      history.user = current_user
+      history.save
+    end
     if @product
       authorize @product
       redirect_to product_path(@product)
