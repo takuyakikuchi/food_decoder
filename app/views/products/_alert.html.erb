@@ -1,4 +1,4 @@
-<% if (@product.ingredients.split & @allergens).any? %>
+<% if (@product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
   <div class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content text-center" id="alert">
@@ -11,11 +11,11 @@
           <p>Please check ingredients</p>
           <div class="alert-danger-bg">
             <p>This product contain :</p>
-            <% icons = @product.ingredients.downcase.split & @allergens %>
+            <% icons = @product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens %>
             <div class="d-flex justify-content-center">
               <% icons.each do |icon| %>
                 <div class="mx-2">
-                  <%= image_tag(Restriction.find_by(name: icon).photo.file.filename, size: "30") %>
+                  <%= image_tag(Restriction.find_by(name: icon).photo, size: "30") %>
                   <p class="mb-0"><%= icon %></p>
                 </div>
               <% end %>
@@ -39,11 +39,11 @@
             <div class="alert-safe-bg">
             <% if (@product.ingredients.downcase.split & @all_restrictions).any? %>
             <p>This product contain :</p>
-              <% icons = @product.ingredients.downcase.split & @all_restrictions %>
+              <% icons = @product.ingredients.downcase.delete("()").split(/[\s,]+/) & @all_restrictions %>
               <div class="d-flex justify-content-center">
                 <% icons.each do |icon| %>
                   <div class="mx-2">
-                    <%= image_tag(Restriction.find_by(name: icon).photo.file.filename, size: "30") %>
+                    <%= image_tag(Restriction.find_by(name: icon).photo, size: "30") %>
                     <p class="mb-0"><%= icon %></p>
                   </div>
                 <% end %>

@@ -5,5 +5,5 @@ class Restriction < ApplicationRecord
   has_many :products, through: :restriction_tags
 
   validates :name, presence: true
-  mount_uploader :photo, PhotoUploader
+  
 end
