@@ -16,7 +16,9 @@ class ProductsController < ApplicationController
     @all_restrictions = restrictions.map do |restriction|
       restriction.name
     end
-    @history = History.find_by(user_id: current_user, product_id: @product)
+    if user_signed_in?
+      @history = History.find_by(user_id: current_user, product_id: @product)
+    end
   end
 
   def bookmark
