@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :bookmark]
   skip_before_action :authenticate_user!
 
   def show
@@ -16,6 +16,15 @@ class ProductsController < ApplicationController
     @all_restrictions = restrictions.map do |restriction|
       restriction.name
     end
+    @history = History.find_by(user_id: current_user, product_id: @product)
+  end
+
+  def bookmark
+    history = History.find_by(user_id: current_user, product_id: @product)
+    history.favorite = !history.favorite
+    history.save
+
+    redirect_to product_path(@product)
   end
 
   def new

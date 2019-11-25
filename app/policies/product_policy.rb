@@ -8,6 +8,7 @@ class ProductPolicy < ApplicationPolicy
   def show?
     return true
   end
+
   def new
     create?
   end
@@ -17,6 +18,10 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
+    return true
+  end
+
+  def bookmark?
     return true
   end
 end
