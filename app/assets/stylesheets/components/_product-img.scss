@@ -8,9 +8,10 @@
 
 .product-name {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   color: #eeeeee;
-  left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   top: 0px;
   text-shadow: 0px 0px 6px rgb(0, 0, 0);
 }
@@ -27,4 +28,24 @@
 #scroll-list {
   height: 45vh;
   overflow: auto;
+}
+
+.product-mark-icon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #eeeeee;
+  text-shadow: 1px 1px 4px #2e3131;
+  font-size: 32px;
+  z-index: 3;
+}
+
+.product-mark-icon-active {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: rgb(250, 215, 89);
+  text-shadow: 1px 1px 4px #2e3131;
+  font-size: 32px;
+  z-index: 3;
 }

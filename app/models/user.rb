@@ -11,4 +11,5 @@ class User < ApplicationRecord
   mount_uploader :avatar, PhotoUploader
 
   validates :name, uniqueness: true, presence: true
+
 end

@@ -10,5 +10,6 @@ class Product < ApplicationRecord
 
     mount_uploader :front_photo, PhotoUploader
     mount_uploader :label_photo, PhotoUploader
+  
 end
 

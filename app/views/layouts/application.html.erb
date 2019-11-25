@@ -13,6 +13,7 @@
   <body>
     <%= render 'shared/navbar' unless @disable_nav %>
     <%= yield %>
+    <%= render 'shared/flashes' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <script src="https://cdn.jsdelivr.net/npm/scandit-sdk@4.x"></script>
