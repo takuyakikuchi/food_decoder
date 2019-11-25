@@ -6,13 +6,13 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h5 class="mt-5 mb-4 font-weight-bold"> Food Restriction Alert </h5>
+          <h5 class="mt-5 mb-2 font-weight-bold"> Food Restriction Alert </h5>
           <p class="text-danger danger-icon"><i class="fas fa-exclamation-circle"></i></p>
           <p>Please check ingredients</p>
           <div class="alert-danger-bg">
             <p>This product contain :</p>
             <% icons = @product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens %>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center flex-wrap">
               <% icons.each do |icon| %>
                 <div class="mx-2">
                   <%= image_tag(Restriction.find_by(name: icon).photo, size: "30") %>
@@ -40,7 +40,7 @@
             <% if (@product.ingredients.downcase.split & @all_restrictions).any? %>
             <p>This product contain :</p>
               <% icons = @product.ingredients.downcase.delete("()").split(/[\s,]+/) & @all_restrictions %>
-              <div class="d-flex justify-content-center">
+              <div class="d-flex justify-content-center flex-wrap">
                 <% icons.each do |icon| %>
                   <div class="mx-2">
                     <%= image_tag(Restriction.find_by(name: icon).photo, size: "30") %>
