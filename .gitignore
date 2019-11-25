@@ -40,3 +40,6 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
+
+# Ignore GCP credential JSON file
+Food decoder-7338dc37ea95.json

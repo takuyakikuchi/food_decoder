@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     resources :histories, only: [:index]
   end
   resources :restrictions, only: [:new, :create]
-  
+
   get '/scan-barcodes', to: 'scans#new'
   post '/scan-barcodes', to: 'scans#create'
-  get '/scan-labels', to: 'scans#new'
+  get '/scan-labels', to: 'scans#text_recognition'
   post '/scan-labels', to: 'scans#create'
 
 end
