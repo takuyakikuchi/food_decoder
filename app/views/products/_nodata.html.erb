@@ -1,0 +1,29 @@
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content text-center" id="alert">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="mt-5 mb-4 font-weight-bold"> No data </h5>
+          <p class="text-info info-icon"><i class="fas fa-info"></i></p>
+          <p>Sorry, this product has not been registered yet</p>
+          <p>Do you want to use text recognition ?</p>
+          <div class="alert-info-bg">
+            <div class="d-flex justify-content-center">
+              <div class="mx-2">
+                <div class="modal-footer">
+                  <div>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Read label</button>
+                    <%= link_to scan_barcodes_path do %>
+                      <button type="button" class="btn btn-success"> Scan anoother</button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

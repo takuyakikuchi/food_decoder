@@ -28,7 +28,9 @@ class ProductsController < ApplicationController
   end
 
   def create
+    img = Cloudinary::Uploader.upload(params[:product]['base64'][:label_photo])
     @product = Product.new(product_params)
+    @product[:label_photo] = img["url"]
     authorize @product
     if @product.save
       redirect_to product_path(@product)

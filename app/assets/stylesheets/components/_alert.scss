@@ -8,6 +8,12 @@
   border-radius: 20px 0px 20px 0px;
 }
 
+.alert-info-bg {
+  background-color: #ffc65a;
+  padding: 20px;
+  border-radius: 20px 0px 20px 0px;
+}
+
 .alert-safe-bg {
   background-color: #a2ded0;
   padding: 20px;
@@ -15,5 +21,9 @@
 }
 
 .danger-icon {
+  font-size: 150px;
+}
+
+.info-icon{
   font-size: 150px;
 }
