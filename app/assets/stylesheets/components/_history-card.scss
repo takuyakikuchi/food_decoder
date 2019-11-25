@@ -1,0 +1,65 @@
+.scroll-horizontal {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.history-card {
+  position: relative;
+  box-shadow: 0px 0px 3px -1px #2e3131;
+  border-radius: 8px;
+  margin-right: 8px;
+  p {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    margin: 0;
+    font-size: 11px;
+    color: #eeeeee;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px #2e3131;
+  }
+  img {
+    border-radius: 10px;
+  }
+}
+
+.mark-icon {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: #eeeeee;
+  text-shadow: 1px 1px 4px #2e3131;
+}
+
+.mark-icon-active {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: rgb(250, 215, 89);
+  text-shadow: 1px 1px 4px #2e3131;
+}
+
+.safe-icon {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  color: #a2ded0;
+  text-shadow: 1px 1px 4px #2e3131;
+}
+
+.warning-icon {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  color: rgba(241, 169, 160, 1);
+  text-shadow: 1px 1px 4px #2e3131;
+}
+
+.product-name {
+  position: absolute;
+  left: 0px;
+}
