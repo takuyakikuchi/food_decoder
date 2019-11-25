@@ -9,13 +9,15 @@
             <div class="position-relative">
                 <%= cl_image_tag @product.front_photo, height: 300, class: 'product-img shadow'%>
                 <h1 class="product-name"><%= @product.name.capitalize %></h1>
-                <% if @history.favorite %>
-                    <%= link_to bookmark_path(@product), method: :put do %>
-                        <i class="fas fa-bookmark product-mark-icon-active"></i>
-                    <% end %>
-                <% else %>
-                    <%= link_to bookmark_path(@product), method: :put do %>
-                        <i class="far fa-bookmark product-mark-icon"></i>
+                <% if user_signed_in? %>
+                    <% if @history.favorite %>
+                        <%= link_to bookmark_path(@product), method: :put do %>
+                            <i class="fas fa-bookmark product-mark-icon-active"></i>
+                        <% end %>
+                    <% else %>
+                        <%= link_to bookmark_path(@product), method: :put do %>
+                            <i class="far fa-bookmark product-mark-icon"></i>
+                        <% end %>
                     <% end %>
                 <% end %>
                 <div class="ingredient-list shadow">
