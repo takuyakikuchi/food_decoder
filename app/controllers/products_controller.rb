@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     authorize @product
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to product_scan_labels_path(@product)
     else
       render :new
     end

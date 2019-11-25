@@ -27,7 +27,7 @@ class ScansController < ApplicationController
   end
 
   def text_recognition
-    @product = Product.find(666)
+    @product = Product.find(params[:product_id])
     authorize @product
 
     # Credentials
@@ -60,6 +60,8 @@ class ScansController < ApplicationController
     translation = translate.translate text, to: language_code
 
     @product.label_text = translation.text.inspect
+    @product.save
+    redirect_to edit_product_path(@product)
   end
 
   private
