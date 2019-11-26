@@ -2,7 +2,7 @@
 <button type="button" class="btn btn-success mb-2" id="shutter">Read</button>
 <canvas id="picture" width="500" height="300" class="mb-2"></canvas>
 <%= simple_form_for @product do |f| %>
-  <%= f.input :barcode %>
+  <%= f.input :barcode, as: :hidden %>
   <%= f.simple_fields_for :base64 do |b| %>
     <%= b.input :label_photo, as: :hidden %>
   <% end %>
