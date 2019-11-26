@@ -6,7 +6,7 @@
         <div class="col col-lg-6">
             <div class="position-relative">
                 <% if @product.front_photo.file.nil? %>
-                    <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="300" width="346" alt="placeholder">
+                    <img class="product-img" src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="300" alt="placeholder">
                 <% else %>
                     <%= cl_image_tag @product.front_photo, height: 300, class: 'product-img shadow'%>
                 <% end %>
@@ -17,9 +17,15 @@
                     <%= @product.name.capitalize %>
                 </h1>
                 <% if user_signed_in? %>
-                    <% if @history.favorite %>
-                        <%= link_to bookmark_path(@product), method: :put do %>
-                            <i class="fas fa-bookmark product-mark-icon-active"></i>
+                    <% if !@history.nil? %>
+                        <% if @history.favorite %>
+                            <%= link_to bookmark_path(@product), method: :put do %>
+                                <i class="fas fa-bookmark product-mark-icon-active"></i>
+                            <% end %>
+                        <% else %>
+                            <%= link_to bookmark_path(@product), method: :put do %>
+                                <i class="far fa-bookmark product-mark-icon"></i>
+                            <% end %>
                         <% end %>
                     <% else %>
                         <%= link_to bookmark_path(@product), method: :put do %>
