@@ -32,7 +32,7 @@ class ScansController < ApplicationController
 
     # Credentials
     project_id = "food-decoder-259909"
-    credentials = "Food decoder-7338dc37ea95.json"
+    credentials = ENV["GOOGLE_APPLICATION_CREDENTIALS"]
 
     # Google Vision
     image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: credentials)
