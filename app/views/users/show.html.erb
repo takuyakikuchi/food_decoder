@@ -39,7 +39,11 @@
       <% @user.histories.uniq(&:product_id).each do |history| %>
         <%= link_to product_path(history.product) do %>
           <div class="history-card">
-            <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+            <% if history.product.front_photo.file.nil? %>
+              <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
+            <% else %>
+              <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+            <% end %>
             <p><%= history.product.name.capitalize %></p>
             <% if history.favorite %>
               <i class="fas fa-bookmark mark-icon-active"></i>

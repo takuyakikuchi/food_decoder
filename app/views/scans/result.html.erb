@@ -1,0 +1,13 @@
+<%= render 'alert_label'%>
+<div class="container">
+    <div class="card mb-3 rounded shadow">
+        <img src=<%= @product.label_photo %> class="card-img-top img-result" alt="label">
+        <%= link_to edit_product_path(@product) do %>
+            <p class="add-result"><i class="far fa-plus-square"></i> Product</p>
+        <% end %>
+        <div class="card-body">
+            <h5 class="card-title">Label Text Result</h5>
+            <p class="card-text"><%= @product.label_text %></p>
+        </div>
+    </div>
+</div>

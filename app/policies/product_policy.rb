@@ -28,4 +28,8 @@ class ProductPolicy < ApplicationPolicy
   def text_recognition?
     return true
   end
+
+  def result?
+    return true
+  end
 end

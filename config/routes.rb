@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:show, :new, :create, :edit] do
     get '/scan-labels', to: 'scans#text_recognition'
+    get '/result', to: 'scans#result', as: :label_result
   end
 
   patch '/products/:id', to: 'products#update'
