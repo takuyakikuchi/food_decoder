@@ -1,9 +1,12 @@
 <%= render 'shared/navbar_home' %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1556906918-c3071bd11598?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
   <div class="container">
-    <h1>Scan What You Eat</h1>
+    <h1>Grocery shopping in Japan made easy</h1>
     <div class="btn_div">
-      <a><%= link_to "Scan now", scan_barcodes_path, class: "btn btn-flat btn-lg jittery shadow"%></a>
+      <%= link_to scan_barcodes_path, class: "btn btn-flat btn-lg jittery shadow" do%>
+        <%= image_tag 'barcode-white.png', height:60, width:60 %>
+        <p class="mb-0">Scan now</p>
+      <% end %>
     </div>
   </div>
 </div>
