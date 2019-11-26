@@ -1,6 +1,13 @@
-<video id="camera" width="500" height="300" class="mb-2"></video>
-<button type="button" class="btn btn-success mb-2" id="shutter"><i class="fas fa-camera"></i></button>
-<canvas id="picture" width="500" height="300" class="mb-2"></canvas>
+<div class="container">
+  <div class="snapper">
+    <video id="camera"></video>
+    <button type="button" class="btn btn-success mb-2" id="shutter"><i class="fas fa-camera"></i></button>
+  </div>
+  <div>
+    <canvas id="picture"></canvas>
+  </div>
+</div>
+
 <%= simple_form_for @product do |f| %>
   <%= f.input :barcode %>
   <%= f.simple_fields_for :base64 do |b| %>
@@ -17,8 +24,8 @@ window.onload = () => {
   const constraints = {
     audio: false,
     video: {
-      width: 500,
-      height: 300,
+      width: { min: 640, ideal: 1280, max: 1920 },
+      height: { min: 400, ideal: 800, max: 1080 },
       facingMode: "user"   // Front camera
       // facingMode: { exact: "environment" }  // in case we use reer camera
     }
@@ -41,7 +48,7 @@ window.onload = () => {
   /**
    * shutter button
    */
-   document.querySelector("#shutter").addEventListener("click", () => {
+  document.querySelector("#shutter").addEventListener("click", () => {
     const ctx = canvas.getContext("2d");
 
     video.pause();  // stop motion
