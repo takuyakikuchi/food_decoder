@@ -22,9 +22,11 @@ class ProductsController < ApplicationController
   end
 
   def bookmark
-    history = History.find_by(user_id: current_user, product_id: @product)
-    history.favorite = !history.favorite
-    history.save
+    histories = History.where(user_id: current_user, product_id: @product)
+    histories.each do |history| 
+      history.favorite = !history.favorite
+      history.save
+    end
 
     redirect_to product_path(@product)
   end
