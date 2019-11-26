@@ -18,6 +18,10 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'pundit'
+# GCP
+gem 'google-cloud-storage'
+gem 'google-cloud-vision'
+gem 'google-cloud-translate'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

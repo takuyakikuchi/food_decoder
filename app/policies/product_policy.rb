@@ -24,4 +24,8 @@ class ProductPolicy < ApplicationPolicy
   def bookmark?
     return true
   end
+
+  def text_recognition?
+    return true
+  end
 end
