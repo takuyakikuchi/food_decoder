@@ -1,0 +1,61 @@
+<video id="camera" width="500" height="300" class="mb-2"></video>
+<button type="button" class="btn btn-success mb-2" id="shutter">Read</button>
+<canvas id="picture" width="500" height="300" class="mb-2"></canvas>
+<%= simple_form_for @product do |f| %>
+  <%= f.input :barcode %>
+  <%= f.simple_fields_for :base64 do |b| %>
+    <%= b.input :label_photo %>
+  <% end %>
+  <%= f.button :submit, "Add", class: 'btn btn-primary' %>
+<% end %>
+<script>
+window.onload = () => {
+  const video  = document.querySelector("#camera");
+  const canvas = document.querySelector("#picture");
+
+  /** camera setting */
+  const constraints = {
+    audio: false,
+    video: {
+      width: 500,
+      height: 300,
+      facingMode: "user"   // Front camera
+      // facingMode: { exact: "environment" }  // in case we use reer camera
+    }
+  };
+
+  /**
+   * Synchronize camra and <video>
+   */
+  navigator.mediaDevices.getUserMedia(constraints)
+  .then( (stream) => {
+    video.srcObject = stream;
+    video.onloadedmetadata = (e) => {
+      video.play();
+    };
+  })
+  .catch( (err) => {
+    console.log(err.name + ": " + err.message);
+  });
+
+  /**
+   * shutter button
+   */
+   document.querySelector("#shutter").addEventListener("click", () => {
+    const ctx = canvas.getContext("2d");
+
+    video.pause();  // stop motion
+    setTimeout( () => {
+      video.play();    // start camera after 0.5 sec
+    }, 500);
+
+    // paste image on canvas
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const dataURL = canvas.toDataURL('image/jpeg');
+
+    const imageInput = document.getElementById('product_base64_label_photo');
+    imageInput.value = dataURL;
+  });
+};
+</script>
