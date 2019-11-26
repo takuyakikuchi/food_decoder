@@ -61,7 +61,27 @@ class ScansController < ApplicationController
 
     @product.label_text = translation.text.inspect
     @product.save
-    redirect_to edit_product_path(@product)
+
+    redirect_to product_label_result_path(@product)
+  end
+
+  def result
+    @product = Product.find(params[:product_id])
+    authorize @product
+
+    restrictions = Restriction.all.first(28)
+    if user_signed_in?
+      @allergens = current_user.restrictions.map do |restriction|
+        restriction.name
+      end
+    else
+      @allergens = restrictions.map do |restriction|
+        restriction.name
+      end
+    end
+    @all_restrictions = restrictions.map do |restriction|
+      restriction.name
+    end
   end
 
   private
