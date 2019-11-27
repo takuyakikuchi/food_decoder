@@ -5,12 +5,15 @@
 
   <div class="d-flex align-items-center user">
     <% if user_signed_in? %>
-      <%= link_to  user_path(current_user) do %>
+      <a class="nav-link p-0 user_avatar">
         <%= user_avatar(current_user) %>
+      </a>
+      <%= link_to user_path(current_user), class:"dropdown-item", id:"profile" do %>
+        <i class="fas fa-address-card"></i>
       <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "session text-decoration-none" do %>
-          <p class="mb-0">Logout</p>
-        <% end %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "session text-decoration-none", class:"dropdown-item", id:"logout" do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
     <% else %>
       <%= link_to new_user_session_path, class: "session text-decoration-none" do %>
         <p class="mb-0">Login</p>
