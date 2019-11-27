@@ -10,15 +10,23 @@
   border-bottom: 2px solid #2e3131;
 }
 
+
 #upload-icon {
+  left: 0;
+  right: 0;
+  margin: auto;
   color: #3AAFA9;
   font-size: 50px;
 }
 
-#new-title {
+
+#upload-img {
   color: #545454;
 }
 
-#product_label_photo {
-  content: "<i class="fas fa-camera"></i>";
+input[type=file] {
+  margin-top:20px;
+  padding:5px;
+  background-color:#a2ded0;
+  border-radius: 5px;
 }

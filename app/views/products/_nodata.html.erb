@@ -1,18 +1,5 @@
-  <div class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content text-center" id="not-found">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h5 class="mt-5 mb-0 font-weight-bold"> Product Not Found </h5>
-          <img src="https://cdn.dribbble.com/users/2194014/screenshots/6044113/dribbble-05.png" width="400" height="310" alt="">
-          <p>Do you want to check the label ?</p>
-          <button type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
-          <div class="mt-3">
-            <%= link_to "Scan Another Barcode", scan_barcodes_path %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="column justify-content-center">
+<h5 class="mt-0 mb-0 font-weight-bold" id="not-found-title"> Product Not Found </h5>
+<img src="https://cdn.dribbble.com/users/2194014/screenshots/6044113/dribbble-05.png" width="100%" alt="">
+<p id="not-found-content">Don't worry, <br> you can also scan a label.</p>
+</div>
