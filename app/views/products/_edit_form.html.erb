@@ -5,12 +5,11 @@
           <%= f.input :barcode %>
           <%= f.input :name %>
           <%= f.input :label_text, as: :text%>
+          <%= f.input :label_photo, as: :file, accept: 'image/*', capture: 'camera' %>
           <%= f.input :ingredients, as: :text %>
-          <%= f.input :front_photo %>
-          <%= f.input :front_photo_cache, as: :hidden %>
+          <%= f.input :front_photo, as: :file, accept: 'image/*', capture: 'camera' %>
           <div class="form-actions text-center mt-3">
           <%= f.button :submit, "Add", class: 'btn btn-primary' %>
-          <% %>
           </div>
         <% end %>
       </div>

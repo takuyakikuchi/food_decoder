@@ -1,10 +1,15 @@
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="col">
+      <div class="form-inputs column text-center item-center">
       <%= simple_form_for @product do |f| %>
         <%= f.input :barcode, as: :hidden %>
+        <div class="column">
         <%= f.input :label_photo, as: :file, accept: 'image/*', capture: 'camera' %>
-
+        </div>
+        <div class="form-actions mt-3">
         <%= f.button :submit, "Check", class: 'btn btn-primary' %>
       <% end %>
+        </div>
+      </div>
     </div>
   </div>
