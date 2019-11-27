@@ -37,5 +37,16 @@
   flex: 0 0 30%;
   text-align: center;
   opacity: 1;
-  background: #a2ded0;
+}
+
+.edit-box {
+  background-color: rgba(250, 216, 89, 0.9);
+  border-radius: 5px;
+  flex: 0 0 30%;
+  text-align: center;
+  i {
+    color: #2e3131;
+    font-size: 32px;
+    margin: 19px 35px;
+  }
 }
