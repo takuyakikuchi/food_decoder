@@ -1,63 +1,53 @@
-<div class="container">
-  <!-- User main info -->
-  <div class="pb-3 m-3 text-center">
-    <h1 class="h4"><%= @user.name.capitalize %>'s profile</h2>
-  </div>
-  <!-- User restrictions -->
-  <div> <!-- border-bottom will be added later -->
-    <div class="d-flex justify-content-between">
-      <h2 class="h6">Food restrictions</h2>
-      <%= link_to edit_user_path(@user) do %>
-        <i class="far fa-edit"></i> edit
-      <% end %>
+<div class="container mt-3">
+  <nav>
+    <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">History</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Restriction</a>
     </div>
-    <div class="restriction-choices_profile">
-      <% @user.restrictions.each do |food| %>
-        <div class="restriction-choice_profile">
-          <%= image_tag(food.photo, size: "30") %>
-          <p><%= food.name %></p>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <!-- User scan histories -->
+        <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
+          <% @user.histories.uniq(&:product_id).each do |history| %>
+            <%= link_to product_path(history.product) do %>
+              <div class="history-card">
+                <% if history.product.front_photo.file.nil? %>
+                  <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
+                <% else %>
+                  <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+                <% end %>
+                <p><%= history.product.name.capitalize %></p>
+                <% if history.favorite %>
+                  <i class="fas fa-bookmark mark-icon-active"></i>
+                <% else %>
+                  <i class="far fa-bookmark mark-icon"></i>
+                <% end %>
+                <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
+                  <i class="fas fa-exclamation-circle warning-icon"></i>
+                <% else %>
+                  <i class="fas fa-thumbs-up safe-icon"></i>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
-      <% end %>
     </div>
-  </div>
-  <!-- User's favorite -->
-  <!-- <div class="m-3 border-bottom">
-    <h2 class="h6"><%= @user.name.capitalize %>'s favorites</h2>
-    <% @user.histories.each do |product| %>
-      <% if product.favorite == true %>
-        <p><%= product.product_id %></p>
-      <% end %>
-    <% end %>
-  </div> -->
-  <!-- User scan histories -->
-  <div class="mt-4">
-    <div class="d-flex justify-content-between">
-      <h2 class="h6">Scanned history</h2>
-      <%= link_to "show more", user_histories_path(@user) %>
-    </div>
-    <div class="d-flex scroll-horizontal">
-      <% @user.histories.uniq(&:product_id).each do |history| %>
-        <%= link_to product_path(history.product) do %>
-          <div class="history-card">
-            <% if history.product.front_photo.file.nil? %>
-              <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
-            <% else %>
-              <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
-            <% end %>
-            <p><%= history.product.name.capitalize %></p>
-            <% if history.favorite %>
-              <i class="fas fa-bookmark mark-icon-active"></i>
-            <% else %>
-              <i class="far fa-bookmark mark-icon"></i>
-            <% end %>
-            <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
-              <i class="fas fa-exclamation-circle warning-icon"></i>
-            <% else %>
-              <i class="fas fa-thumbs-up safe-icon"></i>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <!-- User restrictions -->
+        <div class="restriction-choices_profile mt-3">
+          <% @user.restrictions.each do |food| %>
+            <div class="restriction-choice_profile">
+              <%= image_tag(food.photo, size: "30") %>
+              <p class="mb-0"><%= food.name %></p>
+            </div>
+          <% end %>
+          <div class="edit-box">
+            <%= link_to edit_user_path(@user) do %>
+              <i class="far fa-edit"></i>
             <% end %>
           </div>
-        <% end %>
-      <% end %>
+        </div>
     </div>
-  </div> 
+  </div>  
 </div>

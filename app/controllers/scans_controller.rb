@@ -17,9 +17,14 @@ class ScansController < ApplicationController
       history.user = current_user
       history.save
     end
+
     if @product
-      authorize @product
-      redirect_to product_path(@product)
+      if !@product.ingredients.nil?
+        authorize @product
+        redirect_to product_path(@product)
+      else
+        redirect_to edit_product_path(@product)
+      end
     else
       skip_authorization
       redirect_to new_product_path(barcode: params[:barcode])

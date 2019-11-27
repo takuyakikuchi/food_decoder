@@ -19,12 +19,6 @@ class ProductsController < ApplicationController
     if user_signed_in?
       @history = History.find_by(user_id: current_user, product_id: @product)
     end
-
-    if !@product.ingredients.nil?
-      redirect_to product_path(@product)
-    else
-      redirect_to edit_product_path(@product)
-    end
   end
 
   def bookmark
