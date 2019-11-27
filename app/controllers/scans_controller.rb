@@ -19,8 +19,8 @@ class ScansController < ApplicationController
     end
 
     if @product
+      authorize @product
       if !@product.ingredients.nil?
-        authorize @product
         redirect_to product_path(@product)
       else
         redirect_to edit_product_path(@product)
