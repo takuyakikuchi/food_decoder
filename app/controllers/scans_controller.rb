@@ -38,7 +38,7 @@ class ScansController < ApplicationController
     image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: credentials)
 
     response = image_annotator.text_detection(
-      image: @product.label_photo.file.filename,
+      image: "https://res.cloudinary.com/nst-img/#{@product.label_photo.file.identifier}",
       max_results: 1 # optional, defaults to 10
     )
 
