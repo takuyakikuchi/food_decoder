@@ -6,12 +6,11 @@
 }
 
 .restriction-choice {
-  background-color: #a2ded0;
   padding: 8px;
   border-radius: 5px;
   flex: 0 0 30%;
   text-align: center;
-  opacity: 0.4;
+  opacity: 0.9;
   margin-bottom: 8px;
   &:hover {
     opacity: 1;
@@ -19,7 +18,7 @@
   }
   &.active {
     background: #a2ded0;
-    color: white;
+    color: #2e3131;
     opacity: 1;
   }
 }

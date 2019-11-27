@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center mt-4 h5">Customize <%= @user.name.capitalize %>'s food restrictions</h2>
+  <h2 class="text-center mt-4 h5">Customize your food restrictions</h2>
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= simple_form_for @user do |f| %>
@@ -8,7 +8,7 @@
         <div class="form-group">
           <input type="hidden" name="user[restriction_ids][]" value="">
           <div class="restriction-choices">
-            <% Restriction.all.each do |restriction| %>
+            <% Restriction.all.sort_by{|x| x[:name]}.each do |restriction| %>
               <% if @user.restrictions.include?(restriction) %>
                 <input style="display: none;" class="hidden" type="checkbox" value="<%= restriction.id %>" name="user[restriction_ids][]" id="user_restriction_ids_<%= restriction.id %>">
                 <label class="restriction-choice active" for="user_restriction_ids_<%= restriction.id %>">
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="form-actions text-center my-3">
-        <%= f.button :submit, "Submit", class: 'btn btn-primary' %>
+        <%= f.button :submit, "Save", class: 'btn btn-primary' %>
       </div>
       <% end %>
     </div>
