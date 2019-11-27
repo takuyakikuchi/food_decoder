@@ -12,6 +12,7 @@
 
 
 #upload-icon {
+  position: absolute;
   left: 0;
   right: 0;
   margin: auto;
@@ -19,14 +20,20 @@
   font-size: 50px;
 }
 
-
-#upload-img {
-  color: #545454;
+.upload-div {
+  position: relative;
 }
 
 input[type=file] {
-  margin-top:20px;
-  padding:5px;
-  background-color:#a2ded0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 20px;
   border-radius: 5px;
+  opacity: 0;
+}
+
+#scan-label {
+  padding-top: 50px;
 }
