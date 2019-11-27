@@ -42,11 +42,11 @@
               <p class="mb-0"><%= food.name %></p>
             </div>
           <% end %>
-          <div class="edit-box">
-            <%= link_to edit_user_path(@user) do %>
-              <i class="far fa-edit"></i>
-            <% end %>
-          </div>
+        </div>
+        <div class="text-center my-3">
+        <%= link_to edit_user_path(@user), class: 'btn btn-primary' do %>
+           <i class="far fa-edit"></i> Edit
+        <% end %>
         </div>
     </div>
   </div>  

@@ -1,23 +1,39 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag 'logo.png' %>
+<nav class="navbar navbar-expand-lg navbar-dark fd-navbar bg-dark">
+   <%= link_to root_path, class: "navbar-brand" do %>
+    <div class="d-flex align-items-center">
+      <%= image_tag 'logo.png' %>
+      <p class="nav-title-dark">Food Decoder</p>
+    </div>
   <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="d-flex align-items-center">
-    <%= link_to scan_barcodes_path, class: "nav-link" do%>
-      <%= image_tag 'barcode-green.png', height:60, width:60 %>
-    <% end %>
-    <% if user_signed_in? %>
-      <%= link_to  user_path(current_user) do %>
-        <%= user_avatar(current_user) %>
-      <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "session text-decoration-none" do %>
-          <p class="mb-0">Logout</p>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to scan_barcodes_path, class:"nav-link" do %>
+          <p class="mb-0">Scan Barcode</p>
         <% end %>
-    <% else %>
-      <%= link_to new_user_session_path, class: "session text-decoration-none" do %>
-        <p class="mb-0">Login</p>
-      <% end %>
-    <% end %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to user_path(current_user), class:"nav-link" do %>
+            <p class="mb-0">My Profile</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+            <p class="mb-0">Logout</p>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to new_user_session_path, class:"nav-link" do %>
+            <p class="mb-0">Login</p>
+          <% end %>
+        </li>
+      <% end %> 
+    </ul>
   </div>
-</div>
+</nav>

@@ -1,30 +1,51 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background-color: transparent;
+.fd-navbar .navbar-brand img {
+  width: 30px;
+  height: 40px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.nav-title {
+  margin-bottom: 0px;
+  margin-left: 4px;
+  font-weight: bold;
+  color: #2e3131;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 50px;
-  height: 60px;
-}
-
-.session {
-  margin-left: 7px;
-  opacity: 0.8;
-  border-bottom: 2px solid #3aafa9;
+.nav-title-dark {
+  margin-bottom: 0px;
+  margin-left: 4px;
+  font-weight: bold;
+  color: #eeeeee;
 }
 
 .session p {
   color: #2e3131;
-  text-shadow: 1px 1px 5px #eeeeee;
   font-weight: bold;
   font-size: 18px;
 }
 
 .user {
   margin-right: 5px;
+}
+
+.user_avatar {
+  z-index: 2;
+}
+
+#profile {
+  position: absolute;
+  transition: transform 0.5s 500ms ease-out;
+}
+#profile i,
+#logout i {
+  font-size: 20px;
+}
+.profile-click {
+  transform: translate(-60px, 2px);
+}
+#logout {
+  position: absolute;
+  transition: transform 0.5s 500ms ease-out;
+}
+.logout-click {
+  transform: translate(-25px, 50px);
 }

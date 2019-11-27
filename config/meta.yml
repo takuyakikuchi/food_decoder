@@ -1,0 +1,5 @@
+meta_product_name: "Food decoder"
+meta_title: "Food decoder - Scan food products and find the ingredients"
+meta_description: "Food decoder scan food products and it will raise an alert depending on the food restrictions you have."
+meta_image: "logo.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
