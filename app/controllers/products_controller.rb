@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
       history.save
     end
 
-    redirect_to product_path(@product)
+    redirect_to user_path(current_user)
   end
 
   def new
