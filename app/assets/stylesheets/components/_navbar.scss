@@ -29,17 +29,24 @@
   margin-right: 5px;
 }
 
+.user_avatar {
+  z-index: 2;
+}
+
 #profile{
   position: absolute;
   transition: transform 0.5s 500ms ease-out;
 }
+#profile i, #logout i{
+  font-size: 20px;
+}
 .profile-click{
-  transform: translate(25px, 50px);
+  transform: translate(-60px, 2px);
 }
 #logout{
   position: absolute;
   transition: transform 0.5s 500ms ease-out;
 }
 .logout-click{
-  transform: translate(60px, 2px);
+  transform: translate(-25px, 50px);
 }
