@@ -28,3 +28,18 @@
 .user {
   margin-right: 5px;
 }
+
+#profile{
+  position: absolute;
+  transition: transform 0.5s 500ms ease-out;
+}
+.profile-click{
+  transform: translate(25px, 50px);
+}
+#logout{
+  position: absolute;
+  transition: transform 0.5s 500ms ease-out;
+}
+.logout-click{
+  transform: translate(60px, 2px);
+}
