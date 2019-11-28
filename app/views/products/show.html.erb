@@ -10,7 +10,7 @@
                 <% else %>
                     <%= cl_image_tag @product.front_photo, height: 300, class: 'product-img shadow'%>
                 <% end %>
-                <h1 class="product-name d-flex"> 
+                <h1 class="product-name d-flex">
                     <%= link_to edit_product_path(@product) do %>
                         <p class="edit-icon"><i class="fas fa-edit"></i></p>
                     <% end %>
