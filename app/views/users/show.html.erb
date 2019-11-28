@@ -1,7 +1,11 @@
 <div class="container mt-3">
   <div class="d-flex align-items-center mb-3 justify-content-center">
-    <%= image_tag "#{@user.avatar}", class: "avatar-large mr-2", alt: "avatar-large" %>
-    <%= @user.name %>
+    <% if !@user.avatar.file.nil? %>
+      <%= cl_image_tag @user.avatar, format: :png, height: 60, width: 60, crop: :fill, radius: :max, dpr: 3.0 %>
+      <% else %>
+      <p class="user-placeholder"><i class="fas fa-user-circle"></i></p>
+    <% end %>
+    <p class="mb-0 ml-2"><%= @user.name %></p>
   </div>
   <nav>
     <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
