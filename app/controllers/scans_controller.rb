@@ -53,7 +53,11 @@ class ScansController < ApplicationController
 
     response.responses.map do |res|
       label_arr = res.text_annotations.map{ |text| text.description }
-      text = label_arr.first.delete "\n"
+      if label_arr.empty?
+        text = "No text found"
+      else
+        text = label_arr.first.delete "\n"
+      end
     end
 
     Google::Cloud::Translate.configure do |config|
