@@ -1,4 +1,8 @@
 <div class="container mt-3">
+  <div class="d-flex align-items-center mb-3 justify-content-center">
+    <%= image_tag "#{@user.avatar}", class: "avatar-large mr-2", alt: "avatar-large" %>
+    <%= @user.name %>
+  </div>
   <nav>
     <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">History</a>
@@ -49,5 +53,5 @@
         <% end %>
         </div>
     </div>
-  </div>  
+  </div>
 </div>
