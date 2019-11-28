@@ -1,18 +1,19 @@
-<div id="scandit-barcode-picker"></div>
-<div class="text-center">
-    <div id="scandit-barcode-result"></div>
-    <button
-        class="btn btn-primary my-3"
-        id="continue-scanning-button"
-        onclick="continueScanning()"
-    >
-        Continue Scanning
-    </button>
-</div>
-<form id="barcode-form" action="/scan-barcodes" method="post">
-    <div class="form-group">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <input id="barcode" type="hidden" class="form-control" name="barcode" aria-describedby="emailHelp" placeholder="Barcode number">
-    </div>
-</form>
-
+<body style="background-color: black">
+  <div id="scandit-barcode-picker"></div>
+  <div class="text-center">
+      <div id="scandit-barcode-result"></div>
+      <button
+          class="btn btn-primary my-3"
+          id="continue-scanning-button"
+          onclick="continueScanning()"
+      >
+          Continue Scanning
+      </button>
+  </div>
+  <form id="barcode-form" action="/scan-barcodes" method="post">
+      <div class="form-group">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <input id="barcode" type="hidden" class="form-control" name="barcode" aria-describedby="emailHelp" placeholder="Barcode number">
+      </div>
+  </form>
+</body>
