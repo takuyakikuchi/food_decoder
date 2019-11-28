@@ -8,9 +8,10 @@
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
       <!-- User scan histories -->
-      <p class="mt-1">Today</p>
+        <p class="mt-1">Today</p>
         <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
           <% @user.histories.uniq(&:product_id).each do |history| %>
+          <% if !history.product.name.nil? || !history.product.ingredients.nil? %>
             <% if ((Time.current - history.updated_at) / 1.day).round == 0 %>
               <%= link_to product_path(history.product) do %>
                 <div class="history-card">
@@ -34,10 +35,12 @@
               <% end %>
             <% end %>
           <% end %>
+          <% end %>
         </div>
-      <p class="mt-1">This week</p>
+        <p class="mt-1">This week</p>
         <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
           <% @user.histories.uniq(&:product_id).each do |history| %>
+          <% if !history.product.name.nil? || !history.product.ingredients.nil? %>
             <% if ((Time.current - history.updated_at) / 1.day).round > 0 && ((Time.current - history.updated_at) / 1.day).round <= 7  %>
               <%= link_to product_path(history.product) do %>
                 <div class="history-card">
@@ -61,10 +64,12 @@
               <% end %>
             <% end %>
           <% end %>
+          <% end %>
         </div>
-      <p class="mt-1">Over a week</p>
+        <p class="mt-1">Over a week</p>
         <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
           <% @user.histories.uniq(&:product_id).each do |history| %>
+          <% if !history.product.name.nil? || !history.product.ingredients.nil? %>
             <% if ((Time.current - history.updated_at) / 1.day).round > 7 %>
               <%= link_to product_path(history.product) do %>
                 <div class="history-card">
@@ -87,6 +92,7 @@
                 </div>
               <% end %>
             <% end %>
+          <% end %>
           <% end %>
         </div> 
     </div>
