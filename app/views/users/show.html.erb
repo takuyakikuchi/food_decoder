@@ -10,6 +10,7 @@
       <!-- User scan histories -->
         <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
           <% @user.histories.uniq(&:product_id).each do |history| %>
+          <% if !history.product.name.nil? || !history.product.ingredients.nil? %>
             <%= link_to product_path(history.product) do %>
               <div class="history-card">
                 <% if history.product.front_photo.file.nil? %>
@@ -17,16 +18,19 @@
                 <% else %>
                   <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
                 <% end %>
-                <p><%= history.product.name.capitalize %></p>
+                <% if !history.product.name.nil? %>
+                  <p><%= history.product.name.capitalize %></p>
+                <% end %>
                 <% if history.favorite %>
                   <i class="fas fa-bookmark mark-icon-active"></i>
                 <% else %>
                   <i class="far fa-bookmark mark-icon"></i>
                 <% end %>
-                <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
-                  <i class="fas fa-exclamation-circle warning-icon"></i>
-                <% else %>
-                  <i class="fas fa-thumbs-up safe-icon"></i>
+                  <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
+                    <i class="fas fa-exclamation-circle warning-icon"></i>
+                  <% else %>
+                    <i class="fas fa-thumbs-up safe-icon"></i>
+                  <% end %>
                 <% end %>
               </div>
             <% end %>
