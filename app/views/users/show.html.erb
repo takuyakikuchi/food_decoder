@@ -8,30 +8,87 @@
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
       <!-- User scan histories -->
+      <p class="mt-1">Today</p>
         <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
           <% @user.histories.uniq(&:product_id).each do |history| %>
-            <%= link_to product_path(history.product) do %>
-              <div class="history-card">
-                <% if history.product.front_photo.file.nil? %>
-                  <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
-                <% else %>
-                  <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
-                <% end %>
-                <p><%= history.product.name.capitalize %></p>
-                <% if history.favorite %>
-                  <i class="fas fa-bookmark mark-icon-active"></i>
-                <% else %>
-                  <i class="far fa-bookmark mark-icon"></i>
-                <% end %>
-                <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
-                  <i class="fas fa-exclamation-circle warning-icon"></i>
-                <% else %>
-                  <i class="fas fa-thumbs-up safe-icon"></i>
-                <% end %>
-              </div>
+            <% if ((Time.current - history.updated_at) / 1.day).round == 0 %>
+              <%= link_to product_path(history.product) do %>
+                <div class="history-card">
+                  <% if history.product.front_photo.file.nil? %>
+                    <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
+                  <% else %>
+                    <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+                  <% end %>
+                  <p><%= history.product.name.capitalize %></p>
+                  <% if history.favorite %>
+                    <i class="fas fa-bookmark mark-icon-active"></i>
+                  <% else %>
+                    <i class="far fa-bookmark mark-icon"></i>
+                  <% end %>
+                  <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
+                    <i class="fas fa-exclamation-circle warning-icon"></i>
+                  <% else %>
+                    <i class="fas fa-thumbs-up safe-icon"></i>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
+      <p class="mt-1">This week</p>
+        <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
+          <% @user.histories.uniq(&:product_id).each do |history| %>
+            <% if ((Time.current - history.updated_at) / 1.day).round > 0 && ((Time.current - history.updated_at) / 1.day).round <= 7  %>
+              <%= link_to product_path(history.product) do %>
+                <div class="history-card">
+                  <% if history.product.front_photo.file.nil? %>
+                    <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
+                  <% else %>
+                    <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+                  <% end %>
+                  <p><%= history.product.name.capitalize %></p>
+                  <% if history.favorite %>
+                    <i class="fas fa-bookmark mark-icon-active"></i>
+                  <% else %>
+                    <i class="far fa-bookmark mark-icon"></i>
+                  <% end %>
+                  <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
+                    <i class="fas fa-exclamation-circle warning-icon"></i>
+                  <% else %>
+                    <i class="fas fa-thumbs-up safe-icon"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <p class="mt-1">Over a week</p>
+        <div class="d-flex flex-wrap justify-content-between px-3 mt-3">
+          <% @user.histories.uniq(&:product_id).each do |history| %>
+            <% if ((Time.current - history.updated_at) / 1.day).round > 7 %>
+              <%= link_to product_path(history.product) do %>
+                <div class="history-card">
+                  <% if history.product.front_photo.file.nil? %>
+                    <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
+                  <% else %>
+                    <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+                  <% end %>
+                  <p><%= history.product.name.capitalize %></p>
+                  <% if history.favorite %>
+                    <i class="fas fa-bookmark mark-icon-active"></i>
+                  <% else %>
+                    <i class="far fa-bookmark mark-icon"></i>
+                  <% end %>
+                  <% if (history.product.ingredients.downcase.delete("()").split(/[\s,]+/) & @allergens).any? %>
+                    <i class="fas fa-exclamation-circle warning-icon"></i>
+                  <% else %>
+                    <i class="fas fa-thumbs-up safe-icon"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div> 
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <!-- User restrictions -->
