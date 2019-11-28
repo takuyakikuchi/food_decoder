@@ -15,7 +15,7 @@
             <div class="d-flex justify-content-center flex-wrap">
               <% icons.each do |icon| %>
                 <div class="mx-2">
-                  <%= image_tag(Restriction.find_by(name: icon).photo, size: "30") %>
+                  <%= image_tag(Restriction.find_by(name: icon).photo, size: "50") %>
                   <p class="mb-0"><%= icon %></p>
                 </div>
               <% end %>
@@ -43,7 +43,7 @@
               <div class="d-flex justify-content-center flex-wrap">
                 <% icons.each do |icon| %>
                   <div class="mx-2">
-                    <%= image_tag(Restriction.find_by(name: icon).photo, size: "30") %>
+                    <%= image_tag(Restriction.find_by(name: icon).photo, size: "50") %>
                     <p class="mb-0"><%= icon %></p>
                   </div>
                 <% end %>
