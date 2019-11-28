@@ -1,13 +1,19 @@
 <%= render 'alert_label'%>
-<div class="container">
-    <div class="card mb-3 rounded shadow">
-        <img src=<%= @product.label_photo %> class="card-img-top img-result" alt="label">
-        <%= link_to edit_product_path(@product) do %>
-            <p class="add-result"><i class="far fa-plus-square"></i> Product</p>
-        <% end %>
-        <div class="card-body">
-            <h5 class="card-title">Label Text Result</h5>
-            <p class="card-text"><%= @product.label_text %></p>
-        </div>
+<%= cl_image_tag("#{@product.label_photo}", height: 250, crop: :fill, class: "w-100") %>
+<div class="mt-3 container">
+  <p class="text-center">Kindly
+    <%= link_to edit_product_path(@product) do %>
+      <span class="font-weight-bold text-success">fill the form  <i class="far fa-file-alt"></i></span>
+    <% end %>
+  to add this product</p>
+  <div class="card rounded shadow">
+    <div class="card-body">
+      <div class="card-title">
+        <h5 class="card-title text-center">Label Text Result</h5>
+      </div>
+      <div class="card-text">
+        <p class="card-text"><%= @product.label_text %></p>
+      </div>
     </div>
+  </div>
 </div>
