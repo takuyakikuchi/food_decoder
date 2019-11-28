@@ -18,9 +18,7 @@
                 <% else %>
                   <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
                 <% end %>
-                <% if !history.product.name.nil? %>
-                  <p><%= history.product.name.capitalize %></p>
-                <% end %>
+                <p><%= history.product.name.capitalize %></p>
                 <% if history.favorite %>
                   <i class="fas fa-bookmark mark-icon-active"></i>
                 <% else %>
