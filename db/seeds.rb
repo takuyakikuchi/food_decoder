@@ -25,7 +25,7 @@ candy = Product.new(barcode: 4902888232374, name: "ramune", ingredients: "glucos
 candy.remote_front_photo_url = "https://res.cloudinary.com/nst-img/image/upload/v1574132180/product_test_1_heaobs.jpg"
 candy.save!
 
-puts " Created : #{Product.last}"
+puts " Created : #{Product.last.name}"
 
 puts 'Creating curry seeds'
 
@@ -41,6 +41,42 @@ another = Product.new(barcode: 4979450793526, name: 'Hidagyu beef curry', ingred
 another.remote_front_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574405701/food-decoder/hidagyu_front_xcrkwb.jpg'
 another.remote_label_photo_url = 'https://res.cloudinary.com/nst-img/image/upload/v1574580479/product_test_5_mg5y1i.jpg'
 another.save!
+
+puts "Create: #{Product.last.name}"
+
+tomato = Product.new(barcode: 4901306023228, name: 'kagome tomato juice low salt', ingredients: "tomato, salt")
+tomato.remote_front_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574919786/food-decoder/0tomato-front_iar4ay.jpg'
+tomato.remote_label_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574919785/food-decoder/0tomato-label_xblakd.jpg'
+tomato.save!
+
+puts "Create: #{Product.last.name}"
+
+mocchi = Product.new(barcode: 4903423165744, name: 'mocchi choco bread', ingredients: "wheat, coholate flour paste, shortening, chocolate, egg, sugar, chocolate bread, yeast, fermented seasoning, salt, modified fat, starch,
+glycine, flavoring agent(including milk, lactose), pH conditioner, polysaccharide thickener, yeast food, sucralose")
+mocchi.remote_front_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574919782/food-decoder/0mocchi-choko_qtqhwi.jpg'
+mocchi.remote_label_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574919782/food-decoder/0mocchi-choko-label_rm8w4r.jpg'
+mocchi.save!
+
+puts "Create: #{Product.last.name}"
+
+yoghurt = Product.new(barcode: 4904741005019, name: 'Jersey Yoghurt', ingredients: "milk, sugar")
+yoghurt.remote_front_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574920964/food-decoder/0homo-yoghurt-front_mmerl1.jpg'
+yoghurt.remote_label_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574920852/food-decoder/0homo-yoghurt-barcode_1_avjtew.jpg'
+yoghurt.save!
+
+puts "Create: #{Product.last.name}"
+
+flake = Product.new(barcode: 4904075007000, name: 'Organic corn flake plain', ingredients: "organic corn (non-GMO), organic sugar, organic salt")
+flake.remote_front_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574919787/food-decoder/0flake-front_eipu6v.jpg'
+flake.remote_label_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574919788/food-decoder/0flake-label_jtqlff.jpg'
+flake.save!
+
+puts "Create: #{Product.last.name}"
+
+balm = Product.new(barcode: 4903110261674, name: 'Shittori yawaraka baumkuchen', ingredients: "liquid egg, sugar, wheat, shortening, refined sugar, milk, starch, margarine, phosphor, vegetable oil, protected oil, butter, emulsifying agent, expansive agent, flavoring agent, (contains wheat, milk extract, edd, soybean, wheat) ")
+balm.remote_front_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574920916/food-decoder/0balm-front_t1xcku.jpg'
+balm.remote_label_photo_url = 'https://res.cloudinary.com/do6bcfrqi/image/upload/v1574919788/food-decoder/0balm-label_qb8wbg.jpg'
+balm.save!
 
 puts "Create: #{Product.last.name}"
 # -------------------------------------------
