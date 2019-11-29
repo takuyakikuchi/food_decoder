@@ -26,7 +26,7 @@
                   <% if history.product.front_photo.file.nil? %>
                     <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
                   <% else %>
-                    <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+                    <%= cl_image_tag history.product.front_photo, height: 140, width: 140, crop: :fill %>
                   <% end %>
                   <p><%= history.product.name.capitalize %></p>
                   <% if history.favorite %>
@@ -55,7 +55,7 @@
                   <% if history.product.front_photo.file.nil? %>
                     <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
                   <% else %>
-                    <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+                    <%= cl_image_tag history.product.front_photo, height: 140, width: 140, crop: :fill %>
                   <% end %>
                   <p><%= history.product.name.capitalize %></p>
                   <% if history.favorite %>
@@ -84,7 +84,7 @@
                   <% if history.product.front_photo.file.nil? %>
                     <img src="https://echelon-inc.com/wp-content/uploads/woocommerce-placeholder-600x600.png" height="150" width="150" alt="placeholder">
                   <% else %>
-                    <%= cl_image_tag history.product.front_photo, height: 150, width: 150, crop: :fill %>
+                    <%= cl_image_tag history.product.front_photo, height: 140, width: 140, crop: :fill %>
                   <% end %>
                   <p><%= history.product.name.capitalize %></p>
                   <% if history.favorite %>
@@ -102,7 +102,7 @@
             <% end %>
           <% end %>
           <% end %>
-        </div> 
+        </div>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <!-- User restrictions -->
