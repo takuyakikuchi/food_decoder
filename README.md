@@ -1,2 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
-test2
+Mobile-first web application.
+Scan food barcode or label and get an alert based on your customized food restrictions. https://www.food-decoder.com/
